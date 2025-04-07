@@ -14,11 +14,21 @@ weight = st.number_input("Weight (kg)", min_value=20.0, max_value=200.0, value=7
 height = st.number_input("Height (cm)", min_value=100.0, max_value=220.0, value=170.0)
 blood_glucose = st.number_input("Blood Glucose Level", min_value=50.0, max_value=300.0, value=110.0)
 physical_activity = st.number_input("Physical Activity (mins/day)", min_value=0.0, max_value=300.0, value=30.0)
-diet = st.selectbox("Healthy Diet?", [0, 1])
-medication_adherence = st.selectbox("Medication Adherence (0=Poor, 1=Good, 2=Excellent)", [0, 1, 2])
-stress_level = st.selectbox("High Stress Level?", [0, 1])
+
+# Updated UI with user-friendly options
+diet_option = st.selectbox("Healthy Diet?", ["Yes", "No"])
+diet = 1 if diet_option == "Yes" else 0
+
+med_adherence_option = st.selectbox("Medication Adherence", ["Poor", "Good", "Excellent"])
+medication_adherence = {"Poor": 0, "Good": 1, "Excellent": 2}[med_adherence_option]
+
+stress_option = st.selectbox("High Stress Level?", ["Yes", "No"])
+stress_level = 1 if stress_option == "Yes" else 0
+
+hydration_option = st.selectbox("Hydration Adequate?", ["Yes", "No"])
+hydration_level = 1 if hydration_option == "Yes" else 0
+
 sleep_hours = st.number_input("Sleep Duration (hours)", min_value=0.0, max_value=24.0, value=7.0)
-hydration_level = st.selectbox("Hydration Adequate?", [0, 1])
 bmi = st.number_input("BMI", min_value=10.0, max_value=50.0, value=24.0)
 
 # Prediction
