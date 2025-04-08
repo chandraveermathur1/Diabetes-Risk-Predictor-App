@@ -29,7 +29,13 @@ hydration_option = st.selectbox("Hydration Adequate?", ["Yes", "No"])
 hydration_level = 1 if hydration_option == "Yes" else 0
 
 sleep_hours = st.number_input("Sleep Duration (hours)", min_value=0.0, max_value=24.0, value=7.0)
-bmi = st.number_input("BMI", min_value=10.0, max_value=50.0, value=24.0)
+
+# Calculate BMI dynamically
+height_m = height / 100  # convert cm to meters
+bmi = round(weight / (height_m ** 2), 2)
+
+# Show calculated BMI
+st.markdown(f"🧮 **Calculated BMI:** {bmi}")
 
 # Prediction
 if st.button("Predict Risk Score"):
